@@ -90,22 +90,17 @@ public class UserService {
 
             if(request.getFirstname() != null)
             {
-                user.setFirstname(request.getFirstname().get());
+                user.setFirstname(request.getFirstname());
             }
 
             if(request.getLastname() != null)
             {
-                user.setLastname(request.getLastname().get());
+                user.setLastname(request.getLastname());
             }
 
             if(request.getEmail() != null)
             {
-                user.setEmail(request.getEmail().get());
-            }
-
-            if(request.getRole() != null)
-            {
-                user.setRole(request.getRole().get());
+                user.setEmail(request.getEmail());
             }
 
             userRepository.save(user);

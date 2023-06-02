@@ -24,6 +24,7 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
         } catch (ServletException e) {
             switch (e.getCause().getClass().getSimpleName())
             {
+                case "NullPointerException" -> response.setStatus(HttpStatus.BAD_REQUEST.value());
                 case "NotFoundException"-> response.setStatus(HttpStatus.NOT_FOUND.value());
                 default -> response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             }

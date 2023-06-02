@@ -13,8 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateUserRequest {
-    private Optional<String> firstname;
-    private Optional<String> lastname;
-    private Optional<String> email;
-    private Optional<Role> role;
+    private String firstname;
+    private String lastname;
+    private String email;
 }

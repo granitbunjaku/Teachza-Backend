@@ -8,4 +8,5 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     Set<Course> findByCategory_Id(int category_id);
 
     Set<Course> findByOwner_Id(int user_id);
+
 }

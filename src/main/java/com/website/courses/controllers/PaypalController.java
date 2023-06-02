@@ -27,24 +27,23 @@ public class PaypalController {
 
     @PostMapping("create/payment/{id}")
     public ResponseEntity<?> createPayment(@PathVariable("id") int id, Principal principal) throws NotFoundException {
-        throw new NotFoundException("Not found");
-//        Optional<Course> courseOptional = courseRepository.findById(id);
-//        Optional<User> userOptional = userRepository.findByEmail(principal.getName());
-//
-//        if(courseOptional.isPresent())
-//        {
-//            Course course = courseOptional.get();
-//            User user = userOptional.get();
-//
-//            if(orderRepository.findByStudentIdAndCourseId(user.getId(), course.getId()).isPresent())
-//            {
-//                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("You are already a member");
-//            }
-//
-//            return ResponseEntity.ok().body(paypalService.createPayment(String.valueOf(course.getPrice())));
-//        }
-//
-//        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
+        Optional<Course> courseOptional = courseRepository.findById(id);
+        Optional<User> userOptional = userRepository.findByEmail(principal.getName());
+
+        if(courseOptional.isPresent())
+        {
+            Course course = courseOptional.get();
+            User user = userOptional.get();
+
+            if(orderRepository.findByStudentIdAndCourseId(user.getId(), course.getId()).isPresent())
+            {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("You are already a member");
+            }
+
+            return ResponseEntity.ok().body(paypalService.createPayment(String.valueOf(course.getPrice())));
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
     }
 
     @PostMapping("complete/payment/{id}")

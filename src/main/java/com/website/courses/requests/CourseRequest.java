@@ -15,9 +15,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CourseRequest {
-    private Integer id;
     private String name;
-    private double price;
+    private Double price;
     private Date starting_date;
     private Date ending_date;
     private int categoryNumber;
