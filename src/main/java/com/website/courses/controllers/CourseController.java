@@ -72,8 +72,8 @@ public class CourseController {
         return courseService.coursesByUser(id);
     }
 
-    @PostMapping("/upload")
-    public ResponseEntity<?> handleFileUpload( @RequestParam("file") MultipartFile file ) {
+    @PostMapping("upload")
+    public ResponseEntity<?> handleFileUpload(@RequestBody MultipartFile file) {
 
         String fileName = file.getOriginalFilename();
         try {
